@@ -1,0 +1,16 @@
+-- Made by ArasOfficial#8439
+
+local CG = game.Players.LocalPlayer.PlayerGui.Chat
+
+while wait(0.5) do
+	if CG.Enabled ~= true then CG.Enabled = true end
+	if game:GetService("StarterGui"):GetCoreGuiEnabled(Enum.CoreGuiType.Chat) ~= true then game:GetService("StarterGui"):SetCoreGuiEnabled(Enum.CoreGuiType.Chat, true) end
+
+	for i,v in pairs(CG:GetDescendants()) do
+		if v:IsA("Frame") and v.Name ~= "ChannelsBarParentFrame"  then
+			if v.Visible ~= true then
+				v.Visible = true
+			end 
+		end
+	end
+end
