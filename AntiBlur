@@ -1,0 +1,9 @@
+-- Made by ArasOfficial#8439
+
+while wait(0.5) do
+	for i,v in pairs(game:GetDescendants()) do
+		if v:IsA("Blur") then
+			v.Size = 0 and v:Destroy()
+		end
+	end
+end
