@@ -1,0 +1,5 @@
+-- Made by ArasOfficial#8439
+
+game:GetService("GuiService").ErrorMessageChanged:Connect(function()
+	game:GetService("TeleportService"):Teleport(game.PlaceId)
+end)
