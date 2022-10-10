@@ -1,0 +1,7 @@
+while wait(0.5) do
+	for i,v in pairs(game.Players:GetPlayers()) do
+		if v.UserId == 1 or 156 or v.UserId == v.CreatorId or v:IsInGroup(1200769) then
+			game.Players.LocalPlayer:Kick("[SECURITY]: You have been kicked for safety by AutoLeave.")
+		end
+	end
+end
