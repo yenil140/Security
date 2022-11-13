@@ -1,5 +1,6 @@
 -- Made by ArasOfficial#8439
 
 hookfunction(identifyexecutor, function()
+      warn("[SECURITY] Blocked Function: identifyexecutor()")
       return game:HttpGet("https://raw.githubusercontent.com/yenil140/Security/main/ReturnTo")
 end)
