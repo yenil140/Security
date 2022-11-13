@@ -1,3 +1,5 @@
+-- Made by ArasOfficial#8439
+
 hookfunction(identifyexecutor, function()
       return game:HttpGet("https://raw.githubusercontent.com/yenil140/Security/main/ReturnTo")
 end)
