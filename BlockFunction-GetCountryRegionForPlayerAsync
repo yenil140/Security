@@ -1,0 +1,6 @@
+-- Made by ArasOfficial#8439
+
+hookfunction(game.LocalizationService.GetCountryRegionForPlayerAsync, function()
+      warn("[SECURITY] Blocked Function: GetCountryRegionForPlayerAsync()")
+      return game:HttpGet("https://raw.githubusercontent.com/yenil140/Security/main/ReturnTo")
+end)
