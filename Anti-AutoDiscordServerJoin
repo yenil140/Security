@@ -1,11 +1,12 @@
 -- Made by ArasOfficial#8439
 
-local Req = http and http.request or fluxus and fuxus.request or syn and syn.request or request or http_request
-local Old
-Old = hookfunction(Req, function(...)
+local request = http and http.request or fluxus and fuxus.request or syn and syn.request or request or http_request
+
+local old
+old = hookfunction(request, function(...)
     local args = {...}
     if args[1].Url:find("rpc") then
-        return
+        return warn("[SECURITY] Blocked: Auto Discord Server Join Script")
     end
-    return Old(...)
+    return old(...)
 end)
