@@ -1,6 +1,6 @@
 -- Made by ArasOfficial#8439
 
 hookfunction(game.RbxAnalyticsService.GetClientId, function()
-      warn("Blocked Function: GetClientId()")
+      warn("[SECURITY] Blocked Function: GetClientId()")
       return game:HttpGet("https://raw.githubusercontent.com/yenil140/Security/main/ReturnTo")
 end)
