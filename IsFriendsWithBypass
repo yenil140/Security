@@ -1,0 +1,13 @@
+-- Made by ArasOfficial#8439
+
+local mt = getrawmetatable(game)
+setreadonly(mt, false)
+local oldmt = mt.__namecall
+mt.__namecall = newcclosure(function(self, ...)
+	local method = getnamecallmethod()
+	if method == "IsFriendsWith" then
+		return true
+	end
+	return oldmt(self, ...)
+end)
+setreadonly(mt, true)
