@@ -120,5 +120,5 @@ getgenv().script = function()
 		return g(self,url,...)
 	end)
 end
-local secure=loadstring(game:HttpGet("https://raw.githubusercontent.com/yenil140/AES/main/AES_Execute"))()
+local secure=loadstring(game:HttpGet("https://raw.githubusercontent.com/yenil140/Security/main/Secure_Run"))()
 secure.runscript("getgenv().script()")
