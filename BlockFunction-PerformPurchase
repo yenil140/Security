@@ -7,7 +7,7 @@ mt.__namecall = newcclosure(function(self, ...)
 	local method = getnamecallmethod()
 	if method == "PerformPurchase" then
 		local args = {...}
-		return warn("[SECURITY] Blocked Function: PerformPurchase() with" .. args[2] .. " (ID) argument.")
+		return warn("[SECURITY] Blocked Function: PerformPurchase() with " .. args[1], args[2], args[3] .. " (ID) argument.")
 	end
 	return oldmt(self, ...)
 end)
