@@ -1,3 +1,5 @@
+-- Made by ArasOfficial#8439
+
 local mt = getrawmetatable(game)
 local backupnamecall = mt.__namecall
 setreadonly(mt, false)
@@ -7,7 +9,7 @@ mt.__namecall =
         local method = getnamecallmethod()
         local args = {...}
         if string.lower(method) == "kick" then
-            print("[SECURITY]: You almost get kicked. Attempt denied. - ", args[1])
+            warn("[SECURITY] Blocked Function: Kick()")
             return nil
         end
         return backupnamecall(...)
