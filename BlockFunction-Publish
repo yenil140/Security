@@ -1,0 +1,15 @@
+-- Made by ArasOfficial#8439
+
+local mt = getrawmetatable(game)
+setreadonly(mt, false)
+local oldmt = mt.__namecall
+mt.__namecall = newcclosure(function(self, ...)
+	local method = getnamecallmethod()
+	if method == "Publish" then
+		local args = {...}
+		if not args[1] then warn("[SECURITY] Blocked Function: Publish()") else warn("[SECURITY] Blocked Function: Publish() with " .. args[1] .. " and " .. args[2] .. " arguments.") end
+		return game:HttpGet("https://raw.githubusercontent.com/yenil140/Security/main/ReturnTo")
+	end
+	return oldmt(self, ...)
+end)
+setreadonly(mt, true)
