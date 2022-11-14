@@ -1,0 +1,14 @@
+-- Made by ArasOfficial#8439
+
+local mt = getrawmetatable(game)
+setreadonly(mt, false)
+local oldmt = mt.__namecall
+mt.__namecall = newcclosure(function(self, ...)
+	local method = getnamecallmethod()
+	if method == "PerformPurchase" then
+        warn("[SECURITY] Blocked Function: PerformPurchase()")
+		return game:HttpGet("https://raw.githubusercontent.com/yenil140/Security/main/ReturnTo")
+	end
+	return oldmt(self, ...)
+end)
+setreadonly(mt, true)
