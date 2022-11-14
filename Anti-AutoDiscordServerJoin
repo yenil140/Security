@@ -6,7 +6,7 @@ local old
 old = hookfunction(request, function(...)
 	local args = {...}
 	if args[1].Url:find("rpc") then
-		return warn("[SECURITY] Blocked Request: Auto Discord Server Join | Link: https://discord.gg/" .. game:GetService("HttpService"):JSONDecode(args[1].Body).args.code)
+		return warn("[SECURITY] Blocked Request: https://discord.gg/" .. game:GetService("HttpService"):JSONDecode(args[1].Body).args.code .. " (Auto Discord Server Join)")
 	end
 	return old(...)
 end)
