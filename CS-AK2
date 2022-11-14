@@ -1,0 +1,3 @@
+hookfunction(game.Players.LocalPlayer.Kick, newcclosure(function()
+	return warn("[SECURITY] Blocked Function: Kick()")
+end))
