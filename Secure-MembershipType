@@ -1,0 +1,13 @@
+-- Made by ArasOfficial#8439
+
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local OldIndex = nil
+
+OldIndex = hookmetamethod(game, "__index", function(Self, Key)
+	if Self == LocalPlayer and Key == "MembershipType" then
+		warn("[SECURITY] Secured Value: MembershipType")
+		return("Blocked due to Security Policies. Please DM to ArasOfficial#8439 (Script Creator) for any bugs.")
+	end
+
+	return OldIndex(Self, Key)
+end)
