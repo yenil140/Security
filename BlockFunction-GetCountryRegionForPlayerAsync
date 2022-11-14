@@ -1,6 +1,20 @@
 -- Made by ArasOfficial#8439
 
+local mt = getrawmetatable(game)
+local oldmt = mt.__namecall
+
 hookfunction(game.LocalizationService.GetCountryRegionForPlayerAsync, function()
-      warn("[SECURITY] Blocked Function: GetCountryRegionForPlayerAsync()")
-      return game:HttpGet("https://raw.githubusercontent.com/yenil140/Security/main/ReturnTo")
+	 warn("[SECURITY] Blocked Function: GetCountryRegionForPlayerAsync()")
+	 return game:HttpGet("https://raw.githubusercontent.com/yenil140/Security/main/ReturnTo")
 end)
+
+setreadonly(mt, false)
+mt.__namecall = newcclosure(function(self, ...)
+	local method = getnamecallmethod()
+	if method == "GetCountryRegionForPlayerAsync" then
+		warn("[SECURITY] Blocked Function: GetCountryRegionForPlayerAsync()")
+		return game:HttpGet("https://raw.githubusercontent.com/yenil140/Security/main/ReturnTo")
+	end
+	return oldmt(self, ...)
+end)
+setreadonly(mt, true)
