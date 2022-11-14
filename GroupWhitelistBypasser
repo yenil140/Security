@@ -1,0 +1,17 @@
+-- Made by ArasOfficial#8439
+
+local mt = getrawmetatable(game)
+setreadonly(mt, false)
+local oldmt = mt.__namecall
+mt.__namecall = newcclosure(function(self, ...)
+	local method = getnamecallmethod()
+	if method == "IsInGroup" then
+		return true
+	elseif method == "GetRoleInGroup" then
+		return "Owner"
+	elseif method == "GetRankInGroup" then
+		return 255
+	end
+	return oldmt(self, ...)
+end)
+setreadonly(mt, true)
