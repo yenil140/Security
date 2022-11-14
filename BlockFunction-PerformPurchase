@@ -6,8 +6,8 @@ local oldmt = mt.__namecall
 mt.__namecall = newcclosure(function(self, ...)
 	local method = getnamecallmethod()
 	if method == "PerformPurchase" then
-        warn("[SECURITY] Blocked Function: PerformPurchase()")
-		return game:HttpGet("https://raw.githubusercontent.com/yenil140/Security/main/ReturnTo")
+		local args = {...}
+		return warn("[SECURITY] Blocked Function: PerformPurchase() with" .. args[2] .. " argument.")
 	end
 	return oldmt(self, ...)
 end)
