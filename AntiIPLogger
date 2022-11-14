@@ -8,49 +8,49 @@ IP_Trackers = {
 	"https://v4.ident.me/",
 	"https://api.ipify.org",
 	"https://api.ipify.org/",
-        "https://httpbin.org/ip",
+	"https://httpbin.org/ip",
 	"https://httpbin.org/get",
-        "https://www.myip.com",
-        "https://www.myip.com/",
-        "https://api.myip.com",
-        "https://api.myip.com/",
-        "http://ip-api.com/json/?fields=61439",
-        "https://api.ipify.org/?format=json",
-        "https://api.ipify.org/?format=json/",
-        "https://seeip.org",
-        "https://seeip.org/",
-        "https://ip.seeip.org",
-        "https://ip.seeip.org/",
-        "https://ip.seeip.org/json",
-        "https://ip.seeip.org/json/",
-        "https://ip.seeip.org/jsonip?callback=getip",
-        "https://ip.seeip.org/jsonip?callback=getip/",
-        "https://ip4.seeip.org",
-        "https://ip4.seeip.org/",
-        "https://ip4.seeip.org/json",
-        "https://ip4.seeip.org/json/",
-        "https://ip4.seeip.org/jsonip?callback=getip",
-        "https://ip4.seeip.org/jsonip?callback=getip/",
-        "https://ip6.seeip.org",
-        "https://ip6.seeip.org/",
-        "https://ip6.seeip.org/json",
-        "https://ip6.seeip.org/json/",
-        "https://ip6.seeip.org/jsonip?callback=getip",
-        "https://ip6.seeip.org/jsonip?callback=getip/",
-        "https://www.telize.com/ip",
-        "https://www.telize.com/ip/",
-        "http://ip.telize.com",
-        "http://ip.telize.com/",
-        "http://ip4.telize.com",
-        "http://ip4.telize.com/",
-        "http://ip6.telize.com",
-        "http://ip6.telize.com/",
-        "https://www.telize.com/jsonip",
-        "https://www.telize.com/jsonip/",
-        "https://www.telize.com/jsonip?callback=getip",
-        "https://www.telize.com/jsonip?callback=getip/",
-        "https://ip-api.io",
-        "https://ip-api.io/",
+	"https://www.myip.com",
+	"https://www.myip.com/",
+	"https://api.myip.com",
+	"https://api.myip.com/",
+	"http://ip-api.com/json/?fields=61439",
+	"https://api.ipify.org/?format=json",
+	"https://api.ipify.org/?format=json/",
+	"https://seeip.org",
+	"https://seeip.org/",
+	"https://ip.seeip.org",
+	"https://ip.seeip.org/",
+	"https://ip.seeip.org/json",
+	"https://ip.seeip.org/json/",
+	"https://ip.seeip.org/jsonip?callback=getip",
+	"https://ip.seeip.org/jsonip?callback=getip/",
+	"https://ip4.seeip.org",
+	"https://ip4.seeip.org/",
+	"https://ip4.seeip.org/json",
+	"https://ip4.seeip.org/json/",
+	"https://ip4.seeip.org/jsonip?callback=getip",
+	"https://ip4.seeip.org/jsonip?callback=getip/",
+	"https://ip6.seeip.org",
+	"https://ip6.seeip.org/",
+	"https://ip6.seeip.org/json",
+	"https://ip6.seeip.org/json/",
+	"https://ip6.seeip.org/jsonip?callback=getip",
+	"https://ip6.seeip.org/jsonip?callback=getip/",
+	"https://www.telize.com/ip",
+	"https://www.telize.com/ip/",
+	"http://ip.telize.com",
+	"http://ip.telize.com/",
+	"http://ip4.telize.com",
+	"http://ip4.telize.com/",
+	"http://ip6.telize.com",
+	"http://ip6.telize.com/",
+	"https://www.telize.com/jsonip",
+	"https://www.telize.com/jsonip/",
+	"https://www.telize.com/jsonip?callback=getip",
+	"https://www.telize.com/jsonip?callback=getip/",
+	"https://ip-api.io",
+	"https://ip-api.io/",
 }
 
 local bad = {};
@@ -83,7 +83,7 @@ local old
 old = hookfunction(game.HttpGet, function(self, url)
 	if type(url) == "string" then
 		if table.find(IP_Trackers, url) then
-			warn(url,"tried to log your IP. It was protected.")
+			warn("[SECURITY] Blocked Request: " .. url .. " (IP Logger)")
 			return spoofedIP
 		end
 	end
@@ -95,7 +95,7 @@ oldSyn = hookfunction((syn and syn.request or request),function(a,b)
 	if type(a) == "table" then
 		for i,v in pairs(a) do
 			if i == "Url" and table.find(IP_Trackers, v) then
-				warn(v,"tried to log your IP. It was protected.")
+				warn("[SECURITY] Blocked Request: " .. url .. " (IP Logger)")
 				return {
 					StatusCode = 200,
 					Body = spoofedIP
@@ -112,11 +112,9 @@ getgenv().script = function()
 	g = hookfunction(game.HttpGetAsync,function(self,url,...)
 		for i,v in pairs(bad) do
 			if string.find(url,v) ~= nil then
-				print("Link = " .. url)
-				print("Detected url ending with " .. v)
-				error("Blocked Suspicious Http Request")
+				warn("[SECURITY] Blocked Request: " .. url .. " ending with '" .. v .. "'. (IP Logger Risk)")
 			elseif string.find(url,"https") == nil then
-				error("Unsecure Http Request")
+				warn("[SECURITY] Blocked Request: " .. url .. " (Unsecure HTTP Request)")
 			end
 		end
 		return g(self,url,...)
