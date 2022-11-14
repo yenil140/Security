@@ -4,9 +4,9 @@ local request = http and http.request or fluxus and fuxus.request or syn and syn
 
 local old
 old = hookfunction(request, function(...)
-    local args = {...}
-    if args[1].Url:find("rpc") then
-        return warn("[SECURITY] Blocked: Auto Discord Server Join Script")
-    end
-    return old(...)
+	local args = {...}
+	if args[1].Url:find("rpc") then
+		return warn("[SECURITY] Blocked Request: Auto Discord Server Join | Link: https://discord.gg/" .. game:GetService("HttpService"):JSONDecode(args[1].Body).args.code)
+	end
+	return old(...)
 end)
