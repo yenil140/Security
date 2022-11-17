@@ -1,3 +1,17 @@
-hookfunction(game.Players.LocalPlayer.Kick, newcclosure(function()
-	return warn("[SECURITY] Blocked Function: Kick()")
-end))
+-- Made by ArasOfficial#8439
+
+local mt = getrawmetatable(game)
+local backupnamecall = mt.__namecall
+setreadonly(mt, false)
+mt.__namecall =
+    newcclosure(
+    function(...)
+        local method = getnamecallmethod()
+        local args = {...}
+        if string.lower(method) == "kick" then
+            if not args[2] then return warn("[SECURITY] Blocked Function: Kick()") else return warn("[SECURITY] Blocked Function: Kick() with " .. args[2] .. " reason.") end
+        end
+        return backupnamecall(...)
+    end
+)
+setreadonly(mt, true)
