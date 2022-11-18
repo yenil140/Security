@@ -1,0 +1,17 @@
+-- Made by ArasOfficial#8439
+
+game:GetService("Lighting").FogEnd = 100000
+
+for i,v in pairs(game.Lighting:GetDescendants()) do
+    if v:IsA("Atmosphere") then
+        v:Destroy()
+    end
+end
+
+game.Lighting.ChildAdded:Connect(function(Child)
+     if Child:IsA("Atmosphere") then
+         game:GetService("Lighting").FogEnd = 100000
+         game:GetService("RunService").RenderStepped:Wait()
+         Child:Destroy()
+     end
+end)
