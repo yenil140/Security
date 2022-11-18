@@ -1,8 +1,8 @@
 -- Made by ArasOfficial#8439
 
 for i,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-	if v:IsA("BillboardGui") or v:IsA("SurfaceGui") then
-		v:Destroy()
+    if v:IsA("BillboardGui") or v:IsA("SurfaceGui") then
+	v:Destroy()
     end
 end
 
