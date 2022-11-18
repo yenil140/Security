@@ -1,9 +1,18 @@
 -- Made by ArasOfficial#8439
 
-while wait(0.5) do
-	for i,v in pairs(game.Players.LocalPlayer.Character:GetDescendants())do
-		if v:IsA("BillboardGui") or v:IsA("SurfaceGui") then
-			v:Destroy()
-		end
-	end
+
+for i,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+	if v:IsA("BillboardGui") or v:IsA("SurfaceGui") then
+		v:Destroy()
+    end
 end
+
+game.Players.LocalPlayer.CharacterAdded:Connect(function(Char)
+     wait()
+     for i,v in pairs(Char:GetDescendants()) do
+         if v:IsA("BillboardGui") or v:IsA("SurfaceGui") then
+             game:GetService("RunService").RenderStepped:Wait()
+             v:Destroy()
+         end
+     end
+end)
