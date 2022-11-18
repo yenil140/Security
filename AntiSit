@@ -4,6 +4,7 @@ local RunService = game:GetService("RunService")
 
 function AntiSit()
     if game.Players.LocalPlayer.Character.Humanoid:GetState() == Enum.HumanoidStateType.Seated then 
+        warn("[SECURITY] Prevented from sitting down.")
         game.Players.LocalPlayer.Character.Humanoid.Jump = true
         game.Players.LocalPlayer.Character.Humanoid.Sit = false
     end
