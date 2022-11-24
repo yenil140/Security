@@ -3,11 +3,6 @@
 local mt = getrawmetatable(game)
 local oldmt = mt.__namecall
 
-hookfunction(game.RbxAnalyticsService.GetClientId, function()
-	warn("[SECURITY] Blocked Function: GetClientId()")
-	return game:HttpGet("https://raw.githubusercontent.com/yenil140/Security/main/ReturnTo")
-end)
-
 setreadonly(mt, false)
 mt.__namecall = newcclosure(function(self, ...)
 	local method = getnamecallmethod()
