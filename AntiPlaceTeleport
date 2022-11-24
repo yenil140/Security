@@ -1,0 +1,14 @@
+-- Made by ArasOfficial#8439
+
+local mt = getrawmetatable(game)
+setreadonly(mt, false)
+local oldmt = mt.__namecall
+mt.__namecall = newcclosure(function(self, ...)
+	local method = getnamecallmethod()
+    local args = {...}
+	if method == "Teleport" then
+		if not args[1] then return warn("[SECURITY] Blocked Function: Teleport") else return warn("[SECURITY] Blocked Function: Teleport | Place Id: " .. args[1] .. " | Place Link/URL: https://www.roblox.com/games/"..args[1].."/") end
+	end
+	return oldmt(self, ...)
+end)
+setreadonly(mt, true)
