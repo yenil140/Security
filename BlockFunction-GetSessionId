@@ -1,0 +1,15 @@
+-- Made by ArasOfficial#8439
+
+local mt = getrawmetatable(game)
+local oldmt = mt.__namecall
+
+setreadonly(mt, false)
+mt.__namecall = newcclosure(function(self, ...)
+	local method = getnamecallmethod()
+	if method == "GetSessionId" then
+		warn("[SECURITY] Blocked Function: GetSessionId()")
+		return game:HttpGet("https://raw.githubusercontent.com/yenil140/Security/main/ReturnTo")
+	end
+	return oldmt(self, ...)
+end)
+setreadonly(mt, true)
