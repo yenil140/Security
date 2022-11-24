@@ -51,6 +51,8 @@ IP_Trackers = {
 	"https://www.telize.com/jsonip?callback=getip/",
 	"https://ip-api.io",
 	"https://ip-api.io/",
+        "https://www.roblox.com/my/settings/json",
+	"https://www.roblox.com/my/settings/json/"
 }
 
 local bad = {};
@@ -120,5 +122,5 @@ getgenv().script = function()
 		return g(self,url,...)
 	end)
 end
-local secure=loadstring(game:HttpGet("https://raw.githubusercontent.com/yenil140/Security/main/Secure_Run"))()
+local secure=loadstring(game:HttpGet("https://raw.githubusercontent.com/yenil140/AES/main/AES_Execute"))()
 secure.runscript("getgenv().script()")
