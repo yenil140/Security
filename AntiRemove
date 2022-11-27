@@ -1,0 +1,15 @@
+-- Made by ArasOfficial#8439
+
+local LocalPlayer = game:GetService("Players").LocalPlayer
+
+local mt = getrawmetatable(game)
+setreadonly(mt, false)
+local oldmt = mt.__namecall
+mt.__namecall = newcclosure(function(self, ...)
+	local method = getnamecallmethod()
+	if method == "Remove" and self == LocalPlayer or method == "Destroy" and self == LocalPlayer then
+		return warn("[SECURITY] Blocked Function: Remove() / Destroy()")
+	end
+	return oldmt(self, ...)
+end)
+setreadonly(mt, true)
