@@ -1,6 +1,8 @@
--- Made by IY
+-- Made by ArasOfficial#8439 and EdgeIY
 
 local GC = getconnections or get_signal_cons
+local Module = require(game:GetService("Players").LocalPlayer.PlayerScripts.ClientMain.Replications.Workers.WalkDummy)
+
 if GC then
 	for i,v in pairs(GC(game.Players.LocalPlayer.Idled)) do
 		if v["Disable"] then
@@ -15,4 +17,10 @@ else
 		VirtualUser:CaptureController()
 		VirtualUser:ClickButton2(Vector2.new())
 	end)
+end
+
+if Module and setconstant then
+    setconstant(Module, 34, function()
+         game:GetService("RunService").Heartbeat:Wait()
+    end)
 end
