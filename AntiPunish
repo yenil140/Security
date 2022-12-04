@@ -1,0 +1,17 @@
+-- Made by ArasOfficial#8439
+
+-- NOT TESTED!
+
+local LocalPlayer = game:GetService("Players").LocalPlayer
+
+while wait(0.5) do
+    if not LocalPlayer:FindFirstChild("Character") then
+        for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+            if v:IsA("SpawnLocation") then
+                LocalPlayer:BreakJoints()
+                wait(LocalPlayer.CharacterAdded)
+                LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = v.CFrame
+            end
+        end
+    end
+end
