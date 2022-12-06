@@ -1,4 +1,4 @@
--- Made by ArasOfficial#8439 and EdgeIY
+-- Made by EdgeIY
 
 local GC = getconnections or get_signal_cons
 
