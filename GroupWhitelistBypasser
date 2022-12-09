@@ -1,17 +1,26 @@
 -- Made by ArasOfficial#8439
 
+local UserId = game:GetService("Players").LocalPlayer.UserId
+
+local Request = syn and syn.request or http_request or request or fluxus and fluxus.request
+
 local mt = getrawmetatable(game)
 setreadonly(mt, false)
 local oldmt = mt.__namecall
 mt.__namecall = newcclosure(function(self, ...)
 	local method = getnamecallmethod()
+    local args = {...}
 	if method == "IsInGroup" then
 		return true
 	elseif method == "GetRoleInGroup" then
 		return "Owner"
 	elseif method == "GetRankInGroup" then
 		return 255
-	end
+    elseif method == "HttpGet" or "HttpGetAsync" or Request then
+        if args[1] == "https://groups.roblox.com/v2/users/"..UserId.."/groups/roles" then
+            return true
+        end
+    end
 	return oldmt(self, ...)
 end)
 setreadonly(mt, true)
