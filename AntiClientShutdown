@@ -1,0 +1,14 @@
+-- Made by ArasOfficial#8439
+
+local mt = getrawmetatable(game)
+setreadonly(mt, false)
+local oldmt = mt.__namecall
+mt.__namecall = newcclosure(function(self, ...)
+	local method = getnamecallmethod()
+    local args = {...}
+	if self == game and method == "Shutdown" then
+		return warn("[SECURITY] Blocked Function: Shutdown()")
+    end
+	return oldmt(self, ...)
+end)
+setreadonly(mt, true)
