@@ -1,0 +1,36 @@
+-- Made by ArasOfficial#8439
+
+local Workspace = game:GetService("Workspace")
+local LocalPlayer = game:GetService("Players").LocalPlayer
+
+for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+    if v.Name == LocalPlayer.Name.."'s JailCell" then
+        game:GetService("RunService").RenderStepped:Wait()
+        v:Destroy()
+
+        Character:BreakJoints()
+    end
+
+    if v.Name == "KJail ".. LocalPlayer.DisplayName then
+        game:GetService("RunService").RenderStepped:Wait()
+        v:Destroy()
+
+        Character:BreakJoints()
+    end
+end
+
+Workspace.ChildAdded:Connect(function(Child)
+     if Child.Name == LocalPlayer.Name.."'s JailCell" then
+         game:GetService("RunService").RenderStepped:Wait()
+         Child:Destroy()
+
+         Character:BreakJoints()
+     end
+
+     if Child.Name == "KJail ".. LocalPlayer.DisplayName then
+         game:GetService("RunService").RenderStepped:Wait()
+         Child:Destroy()
+
+         Character:BreakJoints()
+     end
+end)
