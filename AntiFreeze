@@ -14,10 +14,12 @@ function UnFreeze()
 end
 
 while wait(0.5) do
-   for i,v in pairs(game.Players.LocalPlayer:GetChildren()) do
-      if v:IsA("BasePart") and v.Anchored or game.Players.LocalPlayer.Character:FindFirstChild("Torso").Anchored then
-           warn("[SECURITY] Prevented from freezing.")
-           UnFreeze()
-       end
+   for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+        if v:IsA("BasePart") then
+            if v.Anchored or game.Players.LocalPlayer.Character.HumaoidRootPart.Anchored then
+                warn("[SECURITY] Prevented from freezing.")
+                UnFreeze()
+            end
+        end
     end
 end
