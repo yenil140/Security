@@ -68,6 +68,6 @@ Workspace.DescendantAdded:Connect(function(Descendant)
         game:GetService("RunService").RenderStepped:Wait()
         Descendant:Destroy()
         
-       -- LocalPlayer.Character:BreakJoints()
+        -- LocalPlayer.Character:BreakJoints()
     end
 end)
