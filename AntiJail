@@ -3,7 +3,17 @@
 local Workspace = game:GetService("Workspace")
 local LocalPlayer = game:GetService("Players").LocalPlayer
 
-for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+local Rejoin = function()
+    if #game:GetService("Players"):GetPlayers() == 1 then
+        warn("[SECURITY] There needs to be one more person on the server to unjail.")
+        repeat game:GetService("RunService").RenderStepped:Wait() until #game:GetService("Players"):GetPlayers() ~= 1
+        game:GetService("TeleportService"):Teleport(game.PlaceId, LocalPlayer)
+   else
+        game:GetService("TeleportService"):Teleport(game.PlaceId, LocalPlayer)
+    end
+end
+
+for i,v in pairs(Workspace:GetChildren()) do
     if v.Name == LocalPlayer.Name.."'s JailCell" then
         game:GetService("RunService").RenderStepped:Wait()
         v:Destroy()
@@ -16,6 +26,17 @@ for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
         v:Destroy()
 
         Character:BreakJoints()
+    end
+
+    if v.Name == LocalPlayer.Name.."_ADONISJAIL" then
+        game:GetService("RunService").RenderStepped:Wait()
+        Rejoin()
+    end
+end
+
+for i,v in pairs(Workspace:GetDescendants()) do
+    if string.find(v.Name, "jail") or string.find(v.Name, "Jail") then
+        v:Destroy()
     end
 end
 
@@ -33,4 +54,16 @@ Workspace.ChildAdded:Connect(function(Child)
 
          Character:BreakJoints()
      end
+
+     if Child.Name == LocalPlayer.Name.."_ADONISJAIL" then
+        game:GetService("RunService").RenderStepped:Wait()
+        Rejoin()
+    end
+end)
+
+Workspace.DescendantAdded:Connect(function(Descendant)
+     if string.find(Descendant.Name, "jail") or string.find(Descendant.Name, "Jail") then
+        game:GetService("RunService").RenderStepped:Wait()
+        Descendant:Destroy()
+    end
 end)
