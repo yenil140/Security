@@ -20,14 +20,14 @@ for i,v in pairs(Workspace:GetChildren()) do
         game:GetService("RunService").RenderStepped:Wait()
         v:Destroy()
 
-        Character:BreakJoints()
+        -- LocalPlayer.Character:BreakJoints()
     end
 
     if v.Name == "KJail ".. LocalPlayer.DisplayName then
         game:GetService("RunService").RenderStepped:Wait()
         v:Destroy()
 
-        Character:BreakJoints()
+        -- LocalPlayer.Character:BreakJoints()
     end
 
     if v.Name == LocalPlayer.Name.."_ADONISJAIL" then
@@ -47,14 +47,14 @@ Workspace.ChildAdded:Connect(function(Child)
          game:GetService("RunService").RenderStepped:Wait()
          Child:Destroy()
 
-         Character:BreakJoints()
+         -- LocalPlayer.Character:BreakJoints()
      end
 
      if Child.Name == "KJail ".. LocalPlayer.DisplayName then
          game:GetService("RunService").RenderStepped:Wait()
          Child:Destroy()
 
-         Character:BreakJoints()
+         -- LocalPlayer.Character:BreakJoints()
      end
 
      if Child.Name == LocalPlayer.Name.."_ADONISJAIL" then
@@ -67,5 +67,7 @@ Workspace.DescendantAdded:Connect(function(Descendant)
      if string.find(Descendant.Name, "jail") or string.find(Descendant.Name, "Jail") then
         game:GetService("RunService").RenderStepped:Wait()
         Descendant:Destroy()
+        
+       -- LocalPlayer.Character:BreakJoints()
     end
 end)
