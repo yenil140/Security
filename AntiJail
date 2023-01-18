@@ -1,5 +1,7 @@
 -- Made by ArasOfficial#8439
 
+-- Blocks: HD Admin's Jail, Kohl's Admin's Jail, Adonis Admin's Jail.
+
 local Workspace = game:GetService("Workspace")
 local LocalPlayer = game:GetService("Players").LocalPlayer
 
