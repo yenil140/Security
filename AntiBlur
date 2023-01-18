@@ -1,14 +1,14 @@
 -- Made by ArasOfficial#8439
 
 for i,v in pairs(game:GetDescendants()) do
-    if v:IsA("Blur") then
+    if v:IsA("BlurEffect") then
         v.Size = 0
         v:Destroy()
     end
 end
 
 game.DescendantAdded:Connect(function(Descendant) -- Better than game.Lighting.ChildAdded and game.Lighting.DescendantAdded.
-     if Descendant:IsA("Blur") then
+     if Descendant:IsA("BlurEffect") then
          game:GetService("RunService").RenderStepped:Wait()
          Descendant.Size = 0
          Descendant:Destroy()
