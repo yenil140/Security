@@ -1,9 +1,16 @@
 -- Made by ArasOfficial#8439
 
-while wait(0.5) do
-	for i,v in pairs(game:GetDescendants()) do
-		if v:IsA("Blur") then
-			v.Size = 0 and v:Destroy()
-		end
-	end
+for i,v in pairs(game:GetDescendants()) do
+    if v:IsA("Blur") then
+        v.Size = 0
+        v:Destroy()
+    end
 end
+
+game.DescendantAdded:Connect(function(Descendant) -- Better than game.Lighting.ChildAdded and game.Lighting.DescendantAdded.
+     if Descendant:IsA("Blur") then
+         game:GetService("RunService").RenderStepped:Wait()
+         Descendant.Size = 0
+         Descendant:Destroy()
+     end
+end)
